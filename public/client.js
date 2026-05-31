@@ -22,41 +22,59 @@ const benCanYazi = document.getElementById('benCanYazi');
 const savasLog = document.getElementById('savasLogu');
 const oyuncuSayisiSpan = document.getElementById('oyuncuSayisi');
 
+// Oda oluşturma
 document.getElementById('odaOlusturBtn').onclick = () => {
   const ad = document.getElementById('oyuncuAdi').value.trim() || `Steve_${Math.floor(Math.random()*1000)}`;
   socket.emit('odaOlustur', ad);
 };
 
+// Oda koduna Enter basınca katılma (YENİ ÖZELLİK)
+const odaKoduInput = document.getElementById('odaKoduInput');
+odaKoduInput.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const kod = odaKoduInput.value.trim();
+    const ad = document.getElementById('oyuncuAdi').value.trim() || `Steve_${Math.floor(Math.random()*1000)}`;
+    if (kod) {
+      socket.emit('odayaKatil', { odaKodu: kod, oyuncuAdi: ad });
+    }
+  }
+});
+
+// Butona tıklayınca da katılma (opsiyonel, kalabilir)
 document.getElementById('odayaKatilBtn').onclick = () => {
-  const kod = document.getElementById('odaKoduInput').value.trim();
+  const kod = odaKoduInput.value.trim();
   const ad = document.getElementById('oyuncuAdi').value.trim() || `Steve_${Math.floor(Math.random()*1000)}`;
   if (!kod) return;
   socket.emit('odayaKatil', { odaKodu: kod, oyuncuAdi: ad });
 };
 
+// Hazır olma butonu
 hazirBtn.onclick = () => {
   if (aktifOdaKodu && !oyunAktif) socket.emit('hazirDegistir', aktifOdaKodu);
 };
 
+// Oyun başlatma (sadece kurucu)
 baslatBtn.onclick = () => {
   if (aktifOdaKodu && kurucuBenmi && !oyunAktif) socket.emit('oyunBaslat', aktifOdaKodu);
 };
 
+// Aksiyon butonları
 document.getElementById('hitBtn').onclick = () => {
   if (oyunAktif && aktifOdaKodu) socket.emit('hit', aktifOdaKodu);
 };
-
 document.getElementById('jumpBtn').onclick = () => {
   if (oyunAktif && aktifOdaKodu) socket.emit('jump', aktifOdaKodu);
 };
 
+// --- SOCKET OLAYLARI ---
 socket.on('connect', () => {
-  console.log('Bağlandı');
+  console.log('✅ Sunucuya bağlandı');
   hataMesaji.innerText = '';
 });
 
 socket.on('connect_error', (err) => {
-  console.error('Bağlantı hatası:', err);
+  console.error('❌ Bağlantı hatası:', err);
   hataMesaji.innerText = 'Sunucuya bağlanılamıyor.';
 });
 

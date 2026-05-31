@@ -1,7 +1,7 @@
 {
   "name": "steve-arena",
   "version": "1.0.0",
-  "description": "Multiplayer Steve Arena",
+  "description": "Multiplayer Steve Arena - Oda koduna Enter ile katıl",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

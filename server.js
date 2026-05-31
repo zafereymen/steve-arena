@@ -46,15 +46,15 @@ io.on('connection', (socket) => {
   socket.on('odayaKatil', ({ odaKodu, oyuncuAdi }) => {
     const oda = odalar[odaKodu];
     if (!oda) {
-      socket.emit('hata', 'Oda bulunamadı');
+      socket.emit('hata', '❌ Oda bulunamadı');
       return;
     }
     if (oda.oyunBasladi) {
-      socket.emit('hata', 'Oyun başlamış, katılamazsın');
+      socket.emit('hata', '❌ Oyun çoktan başlamış');
       return;
     }
     if (Object.keys(oda.oyuncular).length >= 4) {
-      socket.emit('hata', 'Oda dolu (4/4)');
+      socket.emit('hata', '❌ Oda dolu (4/4)');
       return;
     }
 
@@ -86,12 +86,12 @@ io.on('connection', (socket) => {
     const oda = odalar[odaKodu];
     if (!oda) return;
     if (oda.kurucuId !== socket.id) {
-      socket.emit('hata', 'Sadece kurucu başlatabilir');
+      socket.emit('hata', '⚠️ Sadece kurucu başlatabilir');
       return;
     }
     const tumuHazir = Object.values(oda.oyuncular).every(p => p.hazir);
     if (!tumuHazir || Object.keys(oda.oyuncular).length < 2) {
-      socket.emit('hata', 'En az 2 oyuncu ve herkes hazır olmalı');
+      socket.emit('hata', '⚠️ En az 2 oyuncu ve herkes hazır olmalı');
       return;
     }
     oda.oyunBasladi = true;
