@@ -1,0 +1,205 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    font-family: 'Segoe UI', 'Minecraft', monospace;
+    background: linear-gradient(145deg, #1a4d2a 0%, #0a2f1a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.ekran {
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 32px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 2px solid #ffaa44;
+    max-width: 700px;
+    width: 100%;
+    color: #f0f0f0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 0 0 30px 0;
+    text-shadow: 3px 3px 0 #2c2c2c;
+    letter-spacing: 2px;
+}
+
+.girisKutusu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 40px;
+    border: none;
+    font-weight: bold;
+}
+
+input {
+    background: #3a2c1c;
+    color: #ffdd99;
+    text-align: center;
+    border: 1px solid #ffaa44;
+}
+
+button {
+    background: #ffaa44;
+    color: #2c1a0c;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 4px 0 #8b5a2b;
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #8b5a2b;
+}
+
+button:disabled {
+    opacity: 0.5;
+    transform: none;
+    cursor: not-allowed;
+}
+
+.ayrac {
+    text-align: center;
+    font-weight: bold;
+    color: #ffaa88;
+}
+
+.hata {
+    color: #ff8855;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.ustBar {
+    display: flex;
+    justify-content: space-between;
+    background: #2c2c1c;
+    padding: 12px 20px;
+    border-radius: 60px;
+    margin-bottom: 20px;
+}
+
+.oyuncu-listesi {
+    background: #1e1a10;
+    border-radius: 24px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.oyuncu-karti {
+    background: #3a2e22;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 6px solid #ffaa44;
+}
+
+.oyuncu-adi {
+    font-weight: bold;
+    flex: 1;
+}
+.oyuncu-hazir {
+    color: #66ff66;
+}
+.oyuncu-hazir-degil {
+    color: #ff6666;
+}
+.kurucu-badge {
+    background: gold;
+    color: black;
+    padding: 2px 8px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+}
+
+.hazirBaslat {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#hazirBtn {
+    background: #4c6a9c;
+    color: white;
+}
+#baslatBtn {
+    background: #2c9c4c;
+    color: white;
+}
+
+/* Steve karakter */
+.steve-karakter {
+    text-align: center;
+    margin: 20px 0;
+    background: #2e2c2a;
+    border-radius: 32px;
+    padding: 20px;
+}
+#steveAvatar {
+    width: 80px;
+    height: 80px;
+    background: #d4a373;
+    margin: 0 auto 10px;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 6px 0 #8b5a2b;
+}
+#steveAvatar::after {
+    content: "";
+    position: absolute;
+    bottom: -24px;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    background: #4c6a9c;
+    border-radius: 0 0 12px 12px;
+}
+.can-cubugu {
+    background: #631010;
+    border-radius: 20px;
+    height: 20px;
+    width: 100%;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.can-dolu {
+    background: #4caf50;
+    height: 100%;
+    width: 100%;
+    transition: width 0.2s;
+}
+.aksiyonlar {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+}
+.log {
+    background: #0a0a0a80;
+    height: 120px;
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+}

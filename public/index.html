@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⛏️ Steve's Multiplayer Arena</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="girisEkrani" class="ekran">
+        <h1>⛏️ STEVE'S ARENA</h1>
+        <div class="girisKutusu">
+            <input type="text" id="oyuncuAdi" placeholder="Adınız (Steve_xxx)" maxlength="16">
+            <button id="odaOlusturBtn">🏠 Yeni Oda Oluştur</button>
+            <div class="ayrac">veya</div>
+            <div>
+                <input type="text" id="odaKoduInput" placeholder="Oda Kodu (5 haneli)" maxlength="5">
+                <button id="odayaKatilBtn">🚪 Odaya Katıl</button>
+            </div>
+        </div>
+        <div id="hataMesaji" class="hata"></div>
+    </div>
+
+    <div id="odaEkrani" class="ekran" style="display: none;">
+        <div class="ustBar">
+            <div>🏠 Oda Kodu: <strong id="odaKoduSpan">----</strong></div>
+            <div>🎮 Oyuncular: <span id="oyuncuSayisi">0</span>/4</div>
+        </div>
+
+        <div id="oyuncuListesi" class="oyuncu-listesi"></div>
+
+        <div class="hazirBaslat">
+            <button id="hazirBtn">✅ HAZIR DEĞİL</button>
+            <button id="baslatBtn" disabled>🚀 BAŞLAT</button>
+        </div>
+
+        <!-- Oyun içi aksiyonlar (oyun başlayınca görünür) -->
+        <div id="oyunAlani" style="display: none;">
+            <div class="steve-karakter">
+                <div id="steveAvatar"></div>
+                <div>Ben: <span id="benAdi"></span></div>
+                <div class="can-cubugu">
+                    <div id="benCan" class="can-dolu" style="width:100%"></div>
+                </div>
+                <div id="benCanYazi">100 HP</div>
+            </div>
+            <div class="aksiyonlar">
+                <button id="hitBtn">⛏️ KAZMA VUR</button>
+                <button id="jumpBtn">🦘 ZIPLA</button>
+            </div>
+            <div id="savasLogu" class="log"></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
