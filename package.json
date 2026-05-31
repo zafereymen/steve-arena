@@ -1,7 +1,7 @@
 {
-  "name": "steve-multiplayer",
+  "name": "steve-arena",
   "version": "1.0.0",
-  "description": "Minecraft tarzı çok oyunculu dövüş oyunu",
+  "description": "Multiplayer Steve Arena",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
